@@ -12,18 +12,18 @@ export default function Catalog() {
       .then(data => setProducts(data))
     }, []);
 
-    const addProduct = () => {
-      setProducts(prevState => [...prevState, 
-        {
-          id: prevState.length + 101,
-          name: 'product'+ (prevState.length + 1), 
-          price: (prevState.length * 100) + 100 ,
-          brand: 'some brand',
-          description: 'some description',
-          pictureUrl: 'http://picsum.photos/' + (prevState.length * 100) + 1
-      }
-      ])
-    }
+    // const addProduct = () => {
+    //   setProducts(prevState => [...prevState, 
+    //     {
+    //       id: prevState.length + 101,
+    //       name: 'product'+ (prevState.length + 1), 
+    //       price: (prevState.length * 100) + 100 ,
+    //       brand: 'some brand',
+    //       description: 'some description',
+    //       pictureUrl: 'http://picsum.photos/' + (prevState.length * 100) + 1
+    //   }
+    //   ])
+    // }
 
     return (
       <>
