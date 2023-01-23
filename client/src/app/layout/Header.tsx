@@ -14,8 +14,9 @@ import KitchenIcon from "@mui/icons-material/Kitchen";
 import MenuIcon from "@mui/icons-material/Menu";
 import React from "react";
 // import AdbIcon from '@mui/icons-material/Adb';
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { ShoppingCart } from "@mui/icons-material";
+import { useStoreContext } from "../context/StoreContext";
 
 const midLinks = [
   { title: "products", path: "/products" },
@@ -45,6 +46,10 @@ const navStyles = {
 };
 
 export default function Header({ darkMode, handleThemeChange }: Props) {
+  const {basket} = useStoreContext();
+  const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0);
+
+
   return (
     <AppBar position="static" sx={{ mb: 4 }}>
       <Container maxWidth="xl">
@@ -90,8 +95,8 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
                 </ListItem>
               ))}
             </List>
-            <IconButton size="large" sx={{ color: "inherit" }}>
-              <Badge badgeContent={4} color="secondary">
+            <IconButton component={Link} to='/basket' size="large" sx={{ color: "inherit" }}>
+              <Badge badgeContent={itemCount} color="secondary">
                 <ShoppingCart />
               </Badge>
             </IconButton>
