@@ -6,5 +6,5 @@ export  interface Product {
     pictureUrl: string;
     type?: string;
     brand: string;
-    quantityInStoc?: number;
+    quantityInStock?: number;
 }
