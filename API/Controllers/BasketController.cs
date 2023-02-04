@@ -30,7 +30,6 @@ namespace API.Controllers
             if (basket == null) return NotFound();
 
             return basket.MapBasketToDto();
-            // return _mapper.Map<BasketDto>(basket);
         }
 
         [HttpPost]
