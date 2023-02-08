@@ -72,7 +72,8 @@ namespace API.Controllers
             }
 
             var subtotal = items.Sum(item => item.Price * item.Quantity);
-            var deliveryFee = subtotal > 10000 ? 0 : 500;
+            // var deliveryFee = subtotal > 10000 ? 0 : 500;
+            var deliveryFee = 0;
 
             var order = new Order
             {
@@ -103,7 +104,7 @@ namespace API.Controllers
                     Zip = orderDto.ShippingAddress.Zip,
                     Country = orderDto.ShippingAddress.Country
                 };
-                user.Address = address;
+                user.Address ??= address;
             }
 
             var result = await _context.SaveChangesAsync() > 0;
